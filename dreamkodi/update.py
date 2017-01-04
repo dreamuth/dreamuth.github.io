@@ -14,8 +14,8 @@ changeLog       = addon_dir + '/changelog.txt'
 
 icon = xbmcaddon.Addon().getAddonInfo('icon')
 
-defaultFile     = 'http://cyberrule.com/tv/tamilkodi/get.php?file_version'
-noticeFile      = 'http://cyberrule.com/tv/tamilkodi/get.php?version'
+defaultFile     = 'https://dreamuth.github.io/dreamkodi/default.py'
+noticeFile      = 'https://dreamuth.github.io/dreamkodi/notice.txt'
 
 
 
@@ -41,7 +41,7 @@ def getNotification():
     r = opener.open(req)
     the_page = r.read()
 
-    regex = '__notice__ = "(.*?)"'
+    regex = '__version__ = "(.*?)"'
     ver = re.compile(regex).findall(the_page)[0]
     print 'notice version = ', ver
 
@@ -105,7 +105,7 @@ def TextBoxes(heading,anounce):
 def getChangeLog():
     proxy_handler = urllib2.ProxyHandler({})
     opener = urllib2.build_opener(proxy_handler)
-    req = urllib2.Request("https://dreamuth.github.io/dreamkodi/changelog.txt")
+    req = urllib2.Request("https://dreamuth.github.io/dreamkodi/notice.txt")
     r = opener.open(req)
     the_page = r.read()
     return the_page
