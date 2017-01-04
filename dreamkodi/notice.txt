@@ -1,2 +1,2 @@
-[COLOR yellow][B]Updated by DreamUth[/B][/COLOR]
 __version__ = "2.1"
+[COLOR yellow][B]Updated by DreamUth[/B][/COLOR]
