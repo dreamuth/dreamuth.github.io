@@ -27,7 +27,7 @@ def GetVersion():
     r = opener.open(req)
     the_page = r.read()
 
-    regex = '__version__ = "(.*?)"'
+    regex = '__version__ = "(.*)"'
     ver = re.compile(regex).findall(the_page)[0]
     print 'version = ', ver
 
@@ -41,7 +41,7 @@ def getNotification():
     r = opener.open(req)
     the_page = r.read()
 
-    regex = '__version__ = "(.*?)"'
+    regex = '__version__ = "(.*)"'
     ver = re.compile(regex).findall(the_page)[0]
     print 'notice version = ', ver
 
@@ -59,7 +59,7 @@ def getLocalNotification():
     if os.path.isfile(localNoticeFile):
         with open(localNoticeFile, 'r') as f:
             the_page = f.read()
-            regex = '__notice__ = "(.*?)"'
+            regex = '__version__ = "(.*)"'
             ver = re.compile(regex).findall(the_page)[0]
             print 'local notice ver', ver
             return float(ver)
@@ -123,7 +123,6 @@ def downloadPythonFile(programPath, pyfile):
 
 #-------------------------------------------------------------------------------    
 def CheckForUpdates():
-
     #xbmc.executebuiltin('XBMC.RunScript('++',Env)')
     webNotice = getNotification()
     if (webNotice > getLocalNotification()):
