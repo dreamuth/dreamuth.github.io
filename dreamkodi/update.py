@@ -15,7 +15,7 @@ changeLog       = addon_dir + '/changelog.txt'
 icon = xbmcaddon.Addon().getAddonInfo('icon')
 
 defaultFile     = 'https://dreamuth.github.io/dreamkodi/default.py'
-noticeFile      = 'https://dreamuth.github.io/dreamkodi/notice.txt'
+noticeFile      = 'http://cyberrule.com/tv/tamilkodi/get.php?version'
 
 
 
@@ -27,7 +27,7 @@ def GetVersion():
     r = opener.open(req)
     the_page = r.read()
 
-    regex = '__version__ = "(.*)"'
+    regex = '__version__ = "(.*?)"'
     ver = re.compile(regex).findall(the_page)[0]
     print 'version = ', ver
 
@@ -41,7 +41,7 @@ def getNotification():
     r = opener.open(req)
     the_page = r.read()
 
-    regex = '__version__ = "(.*)"'
+    regex = '__notice__ = "(.*?)"'
     ver = re.compile(regex).findall(the_page)[0]
     print 'notice version = ', ver
 
@@ -50,7 +50,7 @@ def getNotification():
 def getNotice():
     proxy_handler = urllib2.ProxyHandler({})
     opener = urllib2.build_opener(proxy_handler)
-    req = urllib2.Request("https://dreamuth.github.io/dreamkodi/notice.txt")
+    req = urllib2.Request("http://cyberrule.com/tv/tamilkodi/notice.txt")
     r = opener.open(req)
     the_page = r.read()
     return the_page
@@ -59,7 +59,7 @@ def getLocalNotification():
     if os.path.isfile(localNoticeFile):
         with open(localNoticeFile, 'r') as f:
             the_page = f.read()
-            regex = '__version__ = "(.*)"'
+            regex = '__notice__ = "(.*?)"'
             ver = re.compile(regex).findall(the_page)[0]
             print 'local notice ver', ver
             return float(ver)
@@ -105,7 +105,7 @@ def TextBoxes(heading,anounce):
 def getChangeLog():
     proxy_handler = urllib2.ProxyHandler({})
     opener = urllib2.build_opener(proxy_handler)
-    req = urllib2.Request("https://dreamuth.github.io/dreamkodi/notice.txt")
+    req = urllib2.Request("http://cyberrule.com/tv/tamilkodi/changelog.txt")
     r = opener.open(req)
     the_page = r.read()
     return the_page
@@ -123,6 +123,7 @@ def downloadPythonFile(programPath, pyfile):
 
 #-------------------------------------------------------------------------------    
 def CheckForUpdates():
+
     #xbmc.executebuiltin('XBMC.RunScript('++',Env)')
     webNotice = getNotification()
     if (webNotice > getLocalNotification()):
