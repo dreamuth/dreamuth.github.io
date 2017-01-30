@@ -1,7 +1,14 @@
-body 
-{
-	background-image: 		url("../image/background.jpg");
-	background-size:     	auto;
-    background-repeat:   	no-repeat;
-    background-position: 	center center;  
+div.fullscreenImg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+img.fitImg {
+    max-width: 99%;
+    max-height: 99%;
+    opacity: 0.2;
 }
