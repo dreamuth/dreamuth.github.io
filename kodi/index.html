@@ -5,22 +5,22 @@
 	</head>
 	<body>
 			Enter URL:
-			<input type="text" style="width: 800px;" value="http://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi">
+			<input type="text" style="width: 800px;" value="https://download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi">
 			<button>Send..</button>
 			</br></br>
 			<textarea id="kodioutput" cols="150" rows="10"></textarea>
 	</body>
 	<script>
 		// 'Hacky' Way To Send URL's To Kodi/XBMC Using JS/JQuery
-	
+
 		// Address And Port For Your Kodi Install
-		var KodiAddress = 'http://192.168.29.188:8080';
-		
+		var KodiAddress = 'https://192.168.29.188:8080';
+
 		// Send URL To Kodi On Button Click
 		$( 'button' ).click( function() {
 			var kodioutput = $( '#kodioutput' );
 			var URL = $( 'input' ).val();	// Grab Input Value
-			
+
 			// Proceed On URL Not Being Empty (Validate URL Perhaps)
 			if ( URL !== '' ) {
 				kodioutput.val( kodioutput.val() + "Sending " + URL + "........" );
@@ -51,6 +51,6 @@
 					}
 				});
 			}
-		});	
+		});
 	</script>
 </html>
